@@ -1,0 +1,118 @@
+<div class="container-fluid container-body">
+  <div class="p-5">
+    <h2 class="text-center">Welcome to SalaryTracking App!!</h2>
+    <div class="mt-3">
+      <form [formGroup]="addForm" (ngSubmit)="onSubmit()" class="text-center">
+        <div>
+          <mat-form-field class="w-50">
+            <input formControlName="name" matInput placeholder="Name" />
+            <mat-error *ngIf="submitted && errorHandling('name', 'required')">
+              You must provide a name
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="mt-1">
+          <mat-form-field class="w-50">
+            <input formControlName="amount" matInput placeholder="Amount" />
+            <mat-error *ngIf="submitted && errorHandling('amount', 'required')">
+              You must provide a amount
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="mt-1">
+          <mat-form-field class="w-50">
+            <input
+              formControlName="amountTDS"
+              matInput
+              placeholder="Amount TDS"
+            />
+            <mat-error
+              *ngIf="submitted && errorHandling('amountTDS', 'required')"
+            >
+              You must provide a amount TDS
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="mt-1">
+          <mat-form-field class="w-50">
+            <input
+              formControlName="transactionDetails"
+              matInput
+              placeholder="Transaction Details"
+            />
+            <mat-error
+              *ngIf="
+                submitted && errorHandling('transactionDetails', 'required')
+              "
+            >
+              You must provide a transaction details
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="mt-1">
+          <mat-form-field class="w-50">
+            <mat-label>Amount Purpose</mat-label>
+            <mat-select formControlName="amountPurpose">
+              <mat-option value="income">Income</mat-option>
+              <mat-option value="salary">Salary</mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="submitted && errorHandling('amountPurpose', 'required')"
+            >
+              You must provide a amount purpose
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="mt-1">
+          <mat-form-field class="w-50">
+            <mat-label>Amount Type</mat-label>
+            <mat-select formControlName="amounttype">
+              <mat-option value="online">Online</mat-option>
+              <mat-option value="cash">Cash</mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="submitted && errorHandling('amounttype', 'required')"
+            >
+              You must provide a amount type
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="mt-1">
+          <mat-form-field class="w-50">
+            <mat-label>Amount Currency</mat-label>
+            <mat-select formControlName="amountCurrency">
+              <mat-option value="dollar">Dollar</mat-option>
+              <mat-option value="currency">Currency</mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="submitted && errorHandling('amountCurrency', 'required')"
+            >
+              You must provide a amount currency
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="mt-1">
+          <mat-form-field class="w-50">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date" />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="submitted && errorHandling('date', 'required')">
+              You must provide a date
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="mt-4 d-inline-flex">
+          <button mat-raised-button color="primary" class="mr-4">
+            Submit
+          </button>
+          <a href="/list" class="mt-2"><p>View</p></a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

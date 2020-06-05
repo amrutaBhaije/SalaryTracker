@@ -1,0 +1,45 @@
+<div class="container-fluid container-body">
+  <div class="p-5">
+    <h2 class="text-center">Welcome to Listing page!!</h2>
+    <form class="text-center" [formGroup]="addList" (ngSubmit)="onSubmit()">
+      <div class="mt-1">
+        <mat-form-field class="w-50">
+          <mat-label>Select Month</mat-label>
+          <mat-select formControlName="month">
+            <mat-option value="online">Jan</mat-option>
+            <mat-option value="cash">Feb</mat-option>
+            <mat-option value="cash">March</mat-option>
+            <mat-option value="cash">April</mat-option>
+            <mat-option value="cash">May</mat-option>
+            <mat-option value="cash">June</mat-option>
+            <mat-option value="cash">Aug</mat-option>
+            <mat-option value="cash">Sep</mat-option>
+            <mat-option value="cash">Oct</mat-option>
+            <mat-option value="cash">Nov</mat-option>
+            <mat-option value="cash">Dec</mat-option>
+          </mat-select>
+          <mat-error *ngIf="submitted && errorHandling('month', 'required')">
+            Please select month
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="mt-1">
+        <mat-form-field class="w-50">
+          <mat-label>Select Year</mat-label>
+          <mat-select formControlName="year">
+            <mat-option value="online">2020</mat-option>
+          </mat-select>
+          <mat-error *ngIf="submitted && errorHandling('year', 'required')">
+            Please select year
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="mt-4 d-inline-flex">
+        <button mat-raised-button color="primary" class="mr-4">
+          Submit
+        </button>
+        <a href="/" class="mt-2"><p>Back</p></a>
+      </div>
+    </form>
+  </div>
+</div>
