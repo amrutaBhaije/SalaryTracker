@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+
+import { DataService } from '../../data.service'
 
 @Component({
   selector: 'app-product-form',
@@ -7,10 +9,13 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./forms.component.scss'],
 })
 export class FormComponent implements OnInit {
-  public addForm: FormGroup;
-  public submitted: boolean;
+  public addForm: FormGroup
+  public submitted: boolean
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private dataservice: DataService,
+  ) {}
 
   ngOnInit() {
     this.addForm = this.formBuilder.group({
@@ -22,14 +27,27 @@ export class FormComponent implements OnInit {
       date: ['', Validators.required],
       amountCurrency: ['', Validators.required],
       amounttype: ['', Validators.required],
-    });
+    })
   }
 
   onSubmit() {
-    this.submitted = true;
+    this.submitted = true
+    const data = {
+      name: this.addForm.value.name,
+      amount: this.addForm.value.amount,
+      amountTds: this.addForm.value.amountTDS,
+      transactionDetail: this.addForm.value.transactionDetails,
+      amountPurpose: this.addForm.value.amountPurpose,
+      amountType: this.addForm.value.amountType,
+      amountCurrency: this.addForm.value.amountCurrency,
+      date: this.addForm.value.date,
+    }
+    this.dataservice
+      .sendGetRequest(data)
+      .subscribe((res) => console.log('data', res))
   }
 
   public errorHandling = (control: string, error: string) => {
-    return this.addForm.controls[control].hasError(error);
-  };
+    return this.addForm.controls[control].hasError(error)
+  }
 }

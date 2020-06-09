@@ -6,17 +6,18 @@
         <mat-form-field class="w-50">
           <mat-label>Select Month</mat-label>
           <mat-select formControlName="month">
-            <mat-option value="online">Jan</mat-option>
-            <mat-option value="cash">Feb</mat-option>
-            <mat-option value="cash">March</mat-option>
-            <mat-option value="cash">April</mat-option>
-            <mat-option value="cash">May</mat-option>
-            <mat-option value="cash">June</mat-option>
-            <mat-option value="cash">Aug</mat-option>
-            <mat-option value="cash">Sep</mat-option>
-            <mat-option value="cash">Oct</mat-option>
-            <mat-option value="cash">Nov</mat-option>
-            <mat-option value="cash">Dec</mat-option>
+            <mat-option value="1">Jan</mat-option>
+            <mat-option value="2">Feb</mat-option>
+            <mat-option value="3">March</mat-option>
+            <mat-option value="4">April</mat-option>
+            <mat-option value="5">May</mat-option>
+            <mat-option value="6">June</mat-option>
+            <mat-option value="7">July</mat-option>
+            <mat-option value="8">Aug</mat-option>
+            <mat-option value="9">Sep</mat-option>
+            <mat-option value="10">Oct</mat-option>
+            <mat-option value="11">Nov</mat-option>
+            <mat-option value="12">Dec</mat-option>
           </mat-select>
           <mat-error *ngIf="submitted && errorHandling('month', 'required')">
             Please select month
@@ -27,7 +28,7 @@
         <mat-form-field class="w-50">
           <mat-label>Select Year</mat-label>
           <mat-select formControlName="year">
-            <mat-option value="online">2020</mat-option>
+            <mat-option value="2020">2020</mat-option>
           </mat-select>
           <mat-error *ngIf="submitted && errorHandling('year', 'required')">
             Please select year
@@ -41,5 +42,15 @@
         <a href="/" class="mt-2"><p>Back</p></a>
       </div>
     </form>
+    <div class="row mt-5 text-center">
+      <div class="col-md-3">Total Amount</div>
+      <div class="col-md-3">Spent Amount</div>
+      <div class="col-md-3">Remaning Amount</div>
+    </div>
+    <div class="row mt-2 text-center">
+      <div class="col-md-3">₹ {{ getAmt }}</div>
+      <div class="col-md-3">₹ {{ spendAmt }}</div>
+      <div class="col-md-3">₹ {{ remaningAmt }}</div>
+    </div>
   </div>
 </div>
